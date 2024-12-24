@@ -1,8 +1,6 @@
-GAMES VR SỬ DỤNG REACT VITE 
+Web Game VR sử dụng react vite
 
 BALLS VR
-
-ĐIỀU KHIỂN 
 
 ## Tính năng 🌟
 
