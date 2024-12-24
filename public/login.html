@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Ergo Game</title>
+    <script src="./assets/0.7.0/aframe.min.js"></script>
+    <script src="./assets/ocean.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alvinwan/aframe-low-poly@0.0.2/dist/aframe-low-poly.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+    <script src="http://mirrorvr.alvinwan.com/mirrorvr.js"></script>
+    <!-- Liên kết file CSS -->
+    <link href="login-style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>Login to Play Ergo Game</h2>
+      <form id="login-form">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required />
+        
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+
+        <button type="button" id="login-button">Login</button>
+      </form>
+      <p id="error-message" style="color: red; display: none;">Invalid username or password.</p>
+    </div>
+    <a-scene vr-mode-ui="enabled: false" fog="type: linear; color: #a3d0ed; near:5; far:20">
+      <a-sky color="#A3D0ED"></a-sky>
+      
+      <a-ocean depth="50" width="50" amplitude="0" amplitude-variance="0.1" speed="1.5" speed-variance="1" opacity="1" density="50"></a-ocean>
+      <a-ocean  depth="50" width="50" opacity="0.5" amplitude="0" amplitude-variance="0.15" speed="1.5" speed-variance="1" density="50"></a-ocean>
+
+      <a-entity light="
+      type: directional;
+      castShadow: true;
+      intensity: 0.4;
+      color: #D0EAF9;"
+    position="5 3 1"></a-entity>
+  <a-light intensity="0.8" type="ambient" position="1 1 1" color="#B4C5EC"></a-light>
+
+  
+  <a-camera camera-listener onload-init-mirrorvr wasd-controls-enabled="false" lane-controls position="0 0 2.5">
+      <a-entity id="cursor-mobile" cursor="fuse: true; fuseTimeout: 250"
+            position="0 0 -1"
+            geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+            material="color: white; shader: flat"
+            scale="0.5 0.5 0.5"
+            raycaster="far: 50; interval: 1000; objects: .clickable">
+      <a-animation begin="fusing" easing="ease-in" attribute="scale"
+         fill="backwards" from="1 1 1" to="0.2 0.2 0.2" dur="250"></a-animation>
+  </a-camera>
+  
+  </a-scene>
+  
+  <script>
+    // Đăng ký sự kiện cho nút login
+    document.getElementById('login-button').addEventListener('click', function() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      // Kiểm tra tên đăng nhập và mật khẩu (có thể thay đổi hoặc lưu vào backend nếu cần)
+      if (username !== '' && password !== '') {
+        // Lưu trạng thái đăng nhập vào localStorage
+        localStorage.setItem('isLoggedIn', true);
+
+        // Chuyển hướng đến trang game (index.html)
+        window.location.href = 'index.html';
+      } else {
+        // Hiển thị thông báo lỗi nếu không nhập đầy đủ thông tin
+        document.getElementById('error-message').style.display = 'block';
+      }
+    });
+  </script>
+    
+    
+  </body>
+</html>
