@@ -78,26 +78,15 @@
 
 
       <a-camera camera-listener onload-init-mirrorvr wasd-controls-enabled="false" lane-controls position="0 0 2.5">
-        <a-entity
-                id="cursor-mobile"
-                cursor="fuse: true; fuseTimeout: 250"
+          <a-entity id="cursor-mobile" cursor="fuse: true; fuseTimeout: 250"
                 position="0 0 -1"
                 geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
                 material="color: white; shader: flat"
                 scale="0.5 0.5 0.5"
                 raycaster="far: 50; interval: 1000; objects: .clickable">
-          <a-animation
-                  begin="fusing"
-                  easing="ease-in"
-                  attribute="scale"
-                  fill="backwards"
-                  from="1 1 1"
-                  to="0.2 0.2 0.2"
-                  dur="250">
-          </a-animation>
-        </a-entity>
+          <a-animation begin="fusing" easing="ease-in" attribute="scale"
+             fill="backwards" from="1 1 1" to="0.2 0.2 0.2" dur="250"></a-animation>
       </a-camera>
-
 
       <!-- Action! -->
       <lp-cone class="iceberg" segments-radial="5" segments-height="3" height="1" amplitude-variance="0.25" radius-top="0.15" radius-bottom="0.5" position="3 -0.1 -1.5">
@@ -169,37 +158,12 @@
 
           <a-entity id="player" player>
             <a-sphere radius="0.05">
-              <a-animation
-                      repeat="indefinite"
-                      direction="alternate"
-                      attribute="position"
-                      ease="ease-in-out"
-                      from="0 0.5 0.6"
-                      to="0 0.525 0.6">
-              </a-animation>
-              <a-animation
-                      repeat="indefinite"
-                      direction="alternate"
-                      attribute="radius"
-                      from="0.05"
-                      to="0.055"
-                      dur="1500">
-              </a-animation>
-              <a-light
-                      type="point"
-                      intensity="0.35"
-                      color="#FF440C">
-                <a-animation
-                        repeat="indefinite"
-                        direction="alternate-reverse"
-                        attribute="intensity"
-                        ease="ease-in-out"
-                        from="0.35"
-                        to="0.5">
-                </a-animation>
-              </a-light>
+              <a-animation repeat="indefinite" direction="alternate" attribute="position" ease="ease-in-out" from="0 0.5 0.6" to="0 0.525 0.6"></a-animation>
+              <a-animation repeat="indefinite" direction="alternate" attribute="radius" from="0.05" to="0.055" dur="1500"></a-animation>
+              <a-light type="point" intensity="0.35" color="#FF440C">
+                <a-animation repeat="indefinite" direction="alternate-reverse" attribute="intensity" ease="ease-in-out" from="0.35" to="0.5"></a-animation>
+
             </a-sphere>
-          </a-entity>
           </a-entity>
         </a-entity>
       </lp-cone>
