@@ -6,8 +6,8 @@ BALLS VR
 
 ## Tính năng 🌟
 
-- ĐIỀU KHIỂN QUẢ BÓNG ĐỂ TĂNG ĐIỂM
-- SỬ DỤNG VR ĐỂ TĂNG TRẢI NGHIỆM CHÂN THẬT
+- Điều khiển quả bóng để tăng điểm
+- Sử dụng VR để tăng trải nghiệm tính chân thật
 
 ### Cài đặt 🔧
 
