@@ -86,6 +86,7 @@
                 raycaster="far: 50; interval: 1000; objects: .clickable">
           <a-animation begin="fusing" easing="ease-in" attribute="scale"
              fill="backwards" from="1 1 1" to="0.2 0.2 0.2" dur="250"></a-animation>
+          </a-entity>
       </a-camera>
 
       <!-- Action! -->
@@ -109,7 +110,7 @@
         <a-entity id="tree-container" position="0 .5 -1.5" rotation="-90 0 0">
 
           <!-- Tell user to turn around if facing the wrong way! -->
-          <a-text value="Turn around!" mixin="title" rotation="0 180 0" position="0 1.1 10"></a-text>
+          <a-text value= around!" mixin="title" rotation="0 180 0" position="0 1.1 10"></a-text>
           <a-text value="Turn left" mixin="title" rotation="0 -90 0" position="8 1.1 1.5"></a-text>
           <a-text value="Turn right" mixin="title" rotation="0 90 0" position="-8 1.1 1.5"></a-text>
           <a-text value="Look up" mixin="text" height="2" width="2" color="#333" rotation="-90 0 0" position="0 0.5 1.5"></a-text>
@@ -162,7 +163,7 @@
               <a-animation repeat="indefinite" direction="alternate" attribute="radius" from="0.05" to="0.055" dur="1500"></a-animation>
               <a-light type="point" intensity="0.35" color="#FF440C">
                 <a-animation repeat="indefinite" direction="alternate-reverse" attribute="intensity" ease="ease-in-out" from="0.35" to="0.5"></a-animation>
-
+              </a-light>
             </a-sphere>
           </a-entity>
         </a-entity>
