@@ -17,3 +17,5 @@ BALLS VR
 
 1. Dùng `yarn dev` hoặc `npm run dev` để bắt đầu
 2. Mở trình duyệt đến localhost:  `http://localhost:5173`.
+
+Test ngay tại đây: https://balls-vr.vercel.app/
