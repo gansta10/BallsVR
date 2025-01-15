@@ -2,20 +2,29 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login - Ergo Game</title>
+    <title>Login - BALLS VR</title>
+    
+    <!-- Liên kết file CSS -->
+    <link href="login-style.css" rel="stylesheet" />
     <script src="./assets/0.7.0/aframe.min.js"></script>
     <script src="./assets/ocean.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alvinwan/aframe-low-poly@0.0.2/dist/aframe-low-poly.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
     <script src="http://mirrorvr.alvinwan.com/mirrorvr.js"></script>
-    <!-- Liên kết file CSS -->
-    <link href="login-style.css" rel="stylesheet" />
   </head>
   <body>
     <div class="login-container">
-      <h2>Login to play!</h2>
+      <div class="tabs">
+        <button id="login-tab" class="active">Login</button>
+        <button id="register-tab">Register</button>
+      </div>
+
+      
+
+
+      <!-- Form đăng nhập -->
       <form id="login-form">
+        <h2>Login to BALLS VR</h2>
         <label for="username">Username</label>
         <input type="text" id="username" name="username" required />
         
@@ -23,57 +32,159 @@
         <input type="password" id="password" name="password" required />
 
         <button type="button" id="login-button">Login</button>
+        <p id="error-message" style="color: red; display: none;">Invalid username or password.</p>
       </form>
-      <p id="error-message" style="color: red; display: none;">Invalid username or password.</p>
+
+      <!-- Form đăng ký -->
+      <form id="register-form" style="display: none;">
+        <h2>Register for BALLS VR</h2>
+        <label for="reg-username">Username</label>
+        <input type="text" id="reg-username" name="reg-username" required />
+
+        <label for="reg-email">Email</label>
+        <input type="email" id="reg-email" name="reg-email" required />
+
+        <label for="reg-password">Password</label>
+        <input type="password" id="reg-password" name="reg-password" required />
+
+        <button type="button" id="register-button">Register</button>
+        <p id="register-message" style="color: green; display: none;">Registration successful!</p>
+      </form>
     </div>
     <a-scene vr-mode-ui="enabled: false" fog="type: linear; color: #a3d0ed; near:5; far:20">
       <a-sky color="#A3D0ED"></a-sky>
-      
-      <a-ocean depth="50" width="50" amplitude="0" amplitude-variance="0.1" speed="1.5" speed-variance="1" opacity="1" density="50"></a-ocean>
-      <a-ocean  depth="50" width="50" opacity="0.5" amplitude="0" amplitude-variance="0.15" speed="1.5" speed-variance="1" density="50"></a-ocean>
 
-      <a-entity light="
-      type: directional;
-      castShadow: true;
-      intensity: 0.4;
-      color: #D0EAF9;"
-    position="5 3 1"></a-entity>
-  <a-light intensity="0.8" type="ambient" position="1 1 1" color="#B4C5EC"></a-light>
+      <a-ocean
+        depth="50"
+        width="50"
+        amplitude="0"
+        amplitude-variance="0.1"
+        speed="1.5"
+        speed-variance="1"
+        opacity="1"
+        density="50"
+      ></a-ocean>
+      <a-ocean
+        depth="50"
+        width="50"
+        opacity="0.5"
+        amplitude="0"
+        amplitude-variance="0.15"
+        speed="1.5"
+        speed-variance="1"
+        density="50"
+      ></a-ocean>
 
-  
-  <a-camera camera-listener onload-init-mirrorvr wasd-controls-enabled="false" lane-controls position="0 0 2.5">
-      <a-entity id="cursor-mobile" cursor="fuse: true; fuseTimeout: 250"
-            position="0 0 -1"
-            geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-            material="color: white; shader: flat"
-            scale="0.5 0.5 0.5"
-            raycaster="far: 50; interval: 1000; objects: .clickable">
-      <a-animation begin="fusing" easing="ease-in" attribute="scale"
-         fill="backwards" from="1 1 1" to="0.2 0.2 0.2" dur="250"></a-animation>
-  </a-camera>
-  
-  </a-scene>
-  
-  <script>
-    // Đăng ký sự kiện cho nút login
-    document.getElementById('login-button').addEventListener('click', function() {
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
+      <a-entity
+        light="type: directional; castShadow: true; intensity: 0.4; color: #D0EAF9;"
+        position="5 3 1"
+      ></a-entity>
+      <a-light intensity="0.8" type="ambient" position="1 1 1" color="#B4C5EC"></a-light>
 
-      // Kiểm tra tên đăng nhập và mật khẩu (có thể thay đổi hoặc lưu vào backend nếu cần)
-      if (username !== '' && password !== '') {
-        // Lưu trạng thái đăng nhập vào localStorage
-        localStorage.setItem('isLoggedIn', true);
+      <a-camera
+        camera-listener
+        onload-init-mirrorvr
+        wasd-controls-enabled="false"
+        lane-controls
+        position="0 0 2.5"
+      >
+        <a-entity
+          id="cursor-mobile"
+          cursor="fuse: true; fuseTimeout: 250"
+          position="0 0 -1"
+          geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+          material="color: white; shader: flat"
+          scale="0.5 0.5 0.5"
+          raycaster="far: 50; interval: 1000; objects: .clickable"
+        >
+          <a-animation
+            begin="fusing"
+            easing="ease-in"
+            attribute="scale"
+            fill="backwards"
+            from="1 1 1"
+            to="0.2 0.2 0.2"
+            dur="250"
+          ></a-animation>
+        </a-entity>
+      </a-camera>
+    </a-scene>
 
-        // Chuyển hướng đến trang game (index.html)
-        window.location.href = 'index.html';
-      } else {
-        // Hiển thị thông báo lỗi nếu không nhập đầy đủ thông tin
-        document.getElementById('error-message').style.display = 'block';
+    <script>
+      // Chuyển đổi giữa Login và Register
+      const loginTab = document.getElementById('login-tab');
+      const registerTab = document.getElementById('register-tab');
+      const loginForm = document.getElementById('login-form');
+      const registerForm = document.getElementById('register-form');
+
+      loginTab.addEventListener('click', () => {
+        loginTab.classList.add('active');
+        registerTab.classList.remove('active');
+        loginForm.style.display = 'block';
+        registerForm.style.display = 'none';
+      });
+
+      registerTab.addEventListener('click', () => {
+        registerTab.classList.add('active');
+        loginTab.classList.remove('active');
+        registerForm.style.display = 'block';
+        loginForm.style.display = 'none';
+      });
+
+      // Kiểm tra định dạng email
+      function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
       }
-    });
-  </script>
-    
-    
+
+      // Xử lý đăng ký tài khoản
+      document.getElementById('register-button').addEventListener('click', function () {
+        const regUsername = document.getElementById('reg-username').value.trim();
+        const regEmail = document.getElementById('reg-email').value.trim();
+        const regPassword = document.getElementById('reg-password').value.trim();
+
+        if (!regUsername || !regEmail || !regPassword) {
+          alert('Please fill out all fields.');
+          return;
+        }
+        if (!isValidEmail(regEmail)) {
+          alert('Please enter a valid email address.');
+          return;
+        }
+        if (regPassword.length < 6) {
+          alert('Password must be at least 6 characters long.');
+          return;
+        }
+
+        // Lưu thông tin người dùng vào localStorage
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        users.push({ username: regUsername, email: regEmail, password: regPassword });
+        localStorage.setItem('users', JSON.stringify(users));
+
+        // Hiển thị thông báo thành công và chuyển sang tab đăng nhập
+        document.getElementById('register-message').style.display = 'block';
+        setTimeout(() => {
+          registerTab.classList.remove('active');
+          loginTab.classList.add('active');
+          registerForm.style.display = 'none';
+          loginForm.style.display = 'block';
+        }, 1500);
+      });
+
+      // Xử lý đăng nhập
+      document.getElementById('login-button').addEventListener('click', function () {
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+
+        const user = users.find((user) => user.username === username && user.password === password);
+        if (user) {
+          localStorage.setItem('isLoggedIn', true);
+          window.location.href = 'index.html';
+        } else {
+          document.getElementById('error-message').style.display = 'block';
+        }
+      });
+    </script>
   </body>
 </html>

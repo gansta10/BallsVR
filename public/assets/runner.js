@@ -1,3 +1,6 @@
+/**
+ * Created by Alvin Wan (alvinwan.com)
+ **/
 
 const POSITION_X_LEFT = -0.5;
 const POSITION_X_CENTER = 0;
